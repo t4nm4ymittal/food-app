@@ -49,4 +49,12 @@ reviewSchema.pre(/^find/, function (next) {
   });
 const reviewModel = mongoose.model('reviewModel',reviewSchema)
 
+// var review1 = new reviewModel({ review:'StreetFood',
+//         rating:10,
+//          plan:'6358270c4af9987ea669f16d',
+//          user:"633ad8be7a2fabf197ca4750"})
+//          review1.save(function (err,reviewModel) {
+//             if (err) return console.error(err);
+//             console.log(reviewModel.review + " saved to reviewModel collection.");
+//           });          
 module.exports = reviewModel
