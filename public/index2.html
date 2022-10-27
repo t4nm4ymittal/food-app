@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <h2>Welcome To GFG</h2>
+    <form>
+      <p>
+        <label>Username : <input id="name" type="text" /></label>
+      </p>
+
+      <p>
+        <label>Email : <input id="email" type="email" /></label>
+      </p>
+
+      <p>
+        <label>Password : <input id="password" type="password" /></label>
+      </p>
+
+      <p>
+        <button id="signupbtn" type="submit">Submit</button>
+      </p>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      let btn = document.getElementById('signupbtn');
+      btn.addEventListener("click", async function(e){
+        console.log("dfds");
+        e.preventDefault();
+        let email = document.getElementById("email").value;
+        let name = document.getElementById("name").value;
+        let password = document.getElementById("password").value;
+        let resp = await axios.post('/auth/signup',{email,name,password})
+        console.log('resp',resp);
+
+      })
+    </script>
+  </body>
+</html>
