@@ -1,7 +1,7 @@
 const express = require("express");
 const userRouter = express.Router();
-const multer=require('multer');
-// const protectRoute=require('./authHelper');
+//const multer=require('multer');
+ const protectRoute=require('./authHelper');
 const {getUser,getAllUser,updateUser,deleteUser,updateProfileImage}=require('../controller/userController');
 const{signup,login,isAuthorised,protectRoute,forgetpassword,resetpassword,logout}=require('../controller/authController');
 
@@ -34,27 +34,27 @@ userRouter
 //multer for fileupload
 
 // upload-> storage , filter
-const multerStorage=multer.diskStorage({
-    destination:function(req,file,cb){
-        cb(null,'public/images')
-    },
-    filename:function(req,file,cb){
-        cb(null,`user-${Date.now()}.jpeg`)
-    }
-});
+// const multerStorage=multer.diskStorage({
+//     destination:function(req,file,cb){
+//         cb(null,'public/images')
+//     },
+//     filename:function(req,file,cb){
+//         cb(null,`user-${Date.now()}.jpeg`)
+//     }
+// });
 
-const filter = function (req, file, cb) {
-    if (file.mimetype.startsWith("image")) {
-      cb(null, true)
-    } else {
-      cb(new Error("Not an Image! Please upload an image"), false)
-    }
-  }
+// const filter = function (req, file, cb) {
+//     if (file.mimetype.startsWith("image")) {
+//       cb(null, true)
+//     } else {
+//       cb(new Error("Not an Image! Please upload an image"), false)
+//     }
+//   }
 
-const upload = multer({
-    storage: multerStorage,
-    fileFilter: filter
-  });
+// const upload = multer({
+//     storage: multerStorage,
+//     fileFilter: filter
+//   });
 
   userRouter.post("/ProfileImage", upload.single('photo') ,updateProfileImage);
   //get request
